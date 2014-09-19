@@ -4,10 +4,6 @@
 	<meta charset="UTF-8" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<style>
-		p{
-			text-indent:3em;
-		}
-		
 		.s{
 			position:fixed;
 			/*border-radius*/
@@ -94,63 +90,54 @@
 			margin-top:20px;
 		}
 	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
-	<section id="main" class="s m" title="Written in HTML, CSS, and JS by Clive Chan, 2014">
+	<section class="s m" title="Written in HTML, CSS, and JS by Clive Chan, 2014">
 		<h1>Reach the World Foundation</h1>
 		<article>
 		Welcome to Reach the World Foundation! We are a nonprofit organization dedicated to reaching the world through charitable aid.
 		</article>
 	</section>
-	<section id="fundraisers" class="s l t">
+	<section class="s l t">
 		<h2>Fundraisers</h2>
 		<article>
 		<a href="http://calcbee.org">CalcBee</a>, a live competition for high schoolers.
 		</article>
 	</section>
-	<section id="beneficiaries" class="s r t">
+	<section class="s r t">
 		<h2>Beneficiaries</h2>
 		<article>
 		We donate all of our proceeds to various charities.
 		</article>
 	</section>
-	<section id="mission" class="s l b">
-		<h2>Mission</h2>
+	<section class="s l b">
+		<h2>About</h2>
 		<article>
 		<p>Reach the World Foundation (RTWF) is a 501(c)(3) organization that was founded in 2009 and was originally based in Fort Lauderdale, Florida. RTWF was originally founded to raise funds via education and serve children and their families. To accomplish this, Ahaan Rungta, the founder of RTWF, taught elementary, middle, and high-school math and science for several months and hosted and directed a science fiction play, both to raise funds for Starlight Children's Foundation. You can see more details under <a href="#fundraisers">Fundraisers</a>.</p>
 		<p>RTWF was closed for a period of two years, but we are back, and our mission continues. Now, we plan to globalize our causes and serve the needy in any way we can. You can explore more about what we do to accomplish our mission in the other tabs of the site. If you find out a way you think you can help, we'd love to hear it! You can reach us at <a href="mailto:contact@reachtheworldfoundation.org">contact@reachtheworldfoundation.org</a>.</p>
 		</article>
 	</section>
-	<section id="contact" class="s r b">
+	<section class="s r b">
 		<h2>Contact</h2>
 		<article>
 		Contact us at <a href="mailto:contact@reachtheworldfoundation.org">contact@reachtheworldfoundation.org</a>.
 		</article>
 	</section>
 	<div id="overlay"><div></div><a class='close' href='#' onclick='unpop();'>close</a></div>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
-		function pop(obj){
-			$("#overlay div").html($(obj).html());
-			$("#overlay, #overlay *").show();
-			$("#overlay").fadeTo(0.5,1);
-		}
-		function unpop(){
-			$("#overlay").fadeTo(0.5,0,function(){$("#overlay").hide();});
-		}
 		$(function(){
-			setInterval(function(){
-			$(".s article").hide();
-			$(".s").click(function(){
-				pop(this);
+			$("section article").hide();
+			$("section").click(function(){
+				$("#overlay div").html($(this).html());
+				$("#overlay *").show();
+				$("#overlay").show().fadeTo(0.5,1);
 			});
-			$("a[href^=#]").click(function(e){
-				pop(this.hash);
-				e.preventDefault();
-				return false;
-			});},1000);
-			$("#overlay").css("opacity",0);
 		});
+		function unpop(){
+			$("#overlay").fadeTo(0.5,0);
+			setTimeout(function(){$("#overlay").hide();},500);
+		}
 	</script>
 </body>
 </html>
