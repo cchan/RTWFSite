@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<style>
+		p{
+			text-indent:3em;
+		}
+		
+		.s{
+			position:fixed;
+			/*border-radius*/
+			-webkit-border-radius:50%;
+			   -moz-border-radius:50%;
+					border-radius:50%;
+			text-align:center;
+			border:solid 5px #000;
+			/*transition*/
+			-webkit-transition:all 0.5s;
+			   -moz-transition:all 0.5s;
+				 -o-transition:all 0.5s;
+					transition:all 0.5s;
+			padding:10px;
+		}
+		.s:hover{
+			cursor:pointer;
+		}
+		.m{
+			height:280px;
+			margin-top:-200px;
+			width:280px;
+			margin-left:-200px;
+			padding:60px;
+			
+			left:50%;top:50%;
+			background-color:#fff;
+		}
+		.m:hover{
+			background-color:#ccc;
+		}
+		.l,.t,.r,.b{
+			height:170px;
+			margin-top:-100px;
+			width:170px;
+			margin-left:-100px;
+			padding:15px;
+		}
+		.l{left:20%;}.t{top:25%;}.r{left:80%;}.b{top:75%;}
+		.l.t{background-color:#f00;}.l.t:hover{background-color:#c00;}
+		.r.t{background-color:#0f0;}.r.t:hover{background-color:#0c0;}
+		.l.b{background-color:#ff0;}.l.b:hover{background-color:#cc0;}
+		.r.b{background-color:#0ff;}.r.b:hover{background-color:#0cc;}
+		
+		h1, h2{
+			font-weight:400;
+			font-family:'Open Sans', 'Segoe UI', 'Segoe', Arial, sans-serif;
+		}
+		h1{font-size:40pt;margin-top:20px;}
+		h2{font-size:20pt;}
+		
+		#overlay{
+			display:none;
+			position:fixed;
+			left:20%;width:60%;
+			top:20%;height:60%;
+			border:solid 1px black;
+			background-color:rgba(255,255,255,0.96);
+			opacity:0;
+			/*transition*/
+			-webkit-transition:all 0.5s;
+			   -moz-transition:all 0.5s;
+				 -o-transition:all 0.5s;
+					transition:all 0.5s;
+			-webkit-border-radius:5px;
+			   -moz-border-radius:5px;
+				 -o-border-radius:5px;
+					border-radius:5px;
+		}
+		#overlay article{
+			padding:1em 3em;
+		}
+		#overlay .close{
+			display:block;
+			position:absolute;
+			bottom:10px;
+			width:100%;
+			text-align:center;
+		}
+		#overlay h1, #overlay h2{
+			font-size:30pt;
+			text-align:center;
+			margin-bottom:0px;
+			margin-top:20px;
+		}
+	</style>
+</head>
+<body>
+	<section id="main" class="s m" title="Written in HTML, CSS, and JS by Clive Chan, 2014">
+		<h1>Reach the World Foundation</h1>
+		<article>
+		Welcome to Reach the World Foundation! We are a nonprofit organization dedicated to reaching the world through charitable aid.
+		</article>
+	</section>
+	<section id="fundraisers" class="s l t">
+		<h2>Fundraisers</h2>
+		<article>
+		<a href="http://calcbee.org">CalcBee</a>, a live competition for high schoolers.
+		</article>
+	</section>
+	<section id="beneficiaries" class="s r t">
+		<h2>Beneficiaries</h2>
+		<article>
+		We donate all of our proceeds to various charities.
+		</article>
+	</section>
+	<section id="mission" class="s l b">
+		<h2>Mission</h2>
+		<article>
+		<p>Reach the World Foundation (RTWF) is a 501(c)(3) organization that was founded in 2009 and was originally based in Fort Lauderdale, Florida. RTWF was originally founded to raise funds via education and serve children and their families. To accomplish this, Ahaan Rungta, the founder of RTWF, taught elementary, middle, and high-school math and science for several months and hosted and directed a science fiction play, both to raise funds for Starlight Children's Foundation. You can see more details under <a href="#fundraisers">Fundraisers</a>.</p>
+		<p>RTWF was closed for a period of two years, but we are back, and our mission continues. Now, we plan to globalize our causes and serve the needy in any way we can. You can explore more about what we do to accomplish our mission in the other tabs of the site. If you find out a way you think you can help, we'd love to hear it! You can reach us at <a href="mailto:contact@reachtheworldfoundation.org">contact@reachtheworldfoundation.org</a>.</p>
+		</article>
+	</section>
+	<section id="contact" class="s r b">
+		<h2>Contact</h2>
+		<article>
+		Contact us at <a href="mailto:contact@reachtheworldfoundation.org">contact@reachtheworldfoundation.org</a>.
+		</article>
+	</section>
+	<div id="overlay"><div></div><a class='close' href='#' onclick='unpop();'>close</a></div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+		function pop(obj){
+			$("#overlay div").html($(obj).html());
+			$("#overlay, #overlay *").show();
+			$("#overlay").fadeTo(0.5,1);
+		}
+		function unpop(){
+			$("#overlay").fadeTo(0.5,0,function(){$("#overlay").hide();});
+		}
+		$(function(){
+			setInterval(function(){
+			$(".s article").hide();
+			$(".s").click(function(){
+				pop(this);
+			});
+			$("a[href^=#]").click(function(e){
+				pop(this.hash);
+				e.preventDefault();
+				return false;
+			});},1000);
+			$("#overlay").css("opacity",0);
+		});
+	</script>
+</body>
+</html>

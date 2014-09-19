@@ -1,0 +1,18 @@
+	<style>#overlay{display:none;border:solid 1px #000;position:fixed;left:40%;right:40%;top:40%;bottom:40%;}</style>
+	<section id="clickbox">click dis to display content in overlay<article>yay you clicked it</article></section>
+	<div id="overlay"><div></div><a class='close' href='#' onclick='unpop();'>close</a></div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+		function pop(contentobj){
+			$("#overlay div").html($(contentobj).html());
+			$("#overlay").show().fadeIn(0.5);
+		}
+		function unpop(){
+			$("#overlay").fadeOut(0.5,function(){$("#overlay").hide();});
+		}
+		$(function(){
+			$("section article").hide();
+			$("section").click(function(){pop(this);});
+			$("#overlay").css("opacity",0);
+		});
+	</script>
